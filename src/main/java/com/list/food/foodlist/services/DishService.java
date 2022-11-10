@@ -4,6 +4,7 @@ import com.list.food.foodlist.model.Dish;
 import com.list.food.foodlist.model.Food;
 import com.list.food.foodlist.repositories.DishRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.config.ConfigDataResourceNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -17,13 +18,29 @@ public class DishService{
     @Autowired
     DishRepository repository;
 
-    public Dish findById(int id) {
+    public Dish findById(Long id) {
         logger.info("finding all people");
-//        return new Dish(new ArrayList<>(), "you can eat", 50);
-        return new Dish();
+        return repository.findById(id).orElseThrow();
     }
 
-//    public List<Dish> findAll() {
-//
-//    }
+    public List<Dish> findAll() {
+        return repository.findAll();
+    }
+
+    public Dish create(Dish dish) {
+        return repository.save(dish);
+    }
+
+    public Dish update(Dish dish) {
+        var entity = repository.findById(dish.getId()).orElseThrow();
+        entity.setDescription(dish.getDescription());
+        entity.setTimeToPrepare(dish.getTimeToPrepare());
+
+        return repository.save(dish);
+    }
+
+    public void delete(Long id) {
+        var entity = repository.findById(id).orElseThrow();
+        repository.delete(entity);
+    }
 }

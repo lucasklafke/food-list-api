@@ -13,7 +13,8 @@ public class Dish implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    private List<Food> ingredients;
+//    @Column(nullable = true)
+//    private List<Food> ingredients;
 
     @Column(nullable = true)
     private String description;
@@ -25,14 +26,15 @@ public class Dish implements Serializable {
 
     public Dish(){}
 
-    public List<Food> getIngredients() {
-        return ingredients;
-    }
+//    public List<Food> getIngredients() {
+//        return ingredients;
+//    }
+//
+//    public void setIngredients(List<Food> ingredients) {
+//        this.ingredients = ingredients;
+//    }
 
-    public void setIngredients(List<Food> ingredients) {
-        this.ingredients = ingredients;
-    }
-
+    public Long getId() { return this.id; }
     public String getDescription() {
         return description;
     }
