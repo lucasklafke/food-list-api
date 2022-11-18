@@ -13,7 +13,7 @@ import java.util.logging.Logger;
 
 @Service
 public class DishService{
-    private Logger logger = Logger.getLogger("finding all people");
+    private final Logger logger = Logger.getLogger("finding all people");
 
     @Autowired
     DishRepository repository;

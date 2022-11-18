@@ -7,7 +7,7 @@ import java.util.List;
 @Entity
 @Table(name = "dish")
 public class Dish implements Serializable {
-    private static final long serialVersionUID = 1L;
+//    private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,6 +21,10 @@ public class Dish implements Serializable {
 
     @Column(nullable = false)
     private double timeToPrepare;
+
+    public void setId(long id) {
+        this.id = id;
+    }
 
     public static int counter = 0;
 

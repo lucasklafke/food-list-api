@@ -12,5 +12,7 @@ public class Food {
     @Column(nullable = false)
     private String name;
 
+    @Column()
+    private String description;
     public Food(){}
 }
